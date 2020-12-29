@@ -11,7 +11,7 @@ class Database:
         Database.DATABASE[collection].insert(data)
 
     @staticmethod
-    def find(collection: str, query: Dict) -> pymongo.cursor : # returns the cursor object over which we can iterate using for-loop
+    def find(collection: str, query: Dict) -> pymongo.cursor :
         return Database.DATABASE[collection].find(query)
 
     @staticmethod

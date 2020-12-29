@@ -4,4 +4,4 @@ beautifulsoup4
 pymongo[srv]
 passlib
 python-dotenv
-uWSGI
+gunicorn
