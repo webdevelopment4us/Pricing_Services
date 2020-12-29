@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class="container">
+        <h1>Stores</h1>
+        <div class="list-group mb-3">
+            {% for store in stores %} 
+                <div class="list-group-item mb-2 mt-2">
+                    <h4 class="list-group-item-heading">{{ store.name }}</h4>
+                    <p>
+                        For URLs starting with {{ store.url_prefix }}.
+                    </p>
+                    {% if session['email'] == config.ADMIN %}
+                    <a class="btn btn-secondary mb-2 mt-2" href="{{ url_for('stores.edit_store', store_id=store._id) }}">Edit</a>
+                    <a class="btn btn-danger mb-2 mt-2" href="{{ url_for('stores.confirm_delete', store_id=store._id) }}">Permanently Delete Store</a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+        {% if session['email'] == config.ADMIN %}
+        <a class="btn btn-primary mb-3 mt-2" href="{{ url_for('stores.create_store') }}">Create new</a>
+        {% endif %}
+    </section>
+{% endblock %}

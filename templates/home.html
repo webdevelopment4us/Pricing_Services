@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['email'] %}
+    <p>Welcome, <b>{{ session.email }}</b></p>
+{% endif %}
+<div class="container jumbotron mt-5">
+    <h1 class="display-4">Pricing Services</h1>
+    <p class="lead">We scan online store websites to alert you of price drops in the items that interest you.</p>
+    <hr class="my-4">
+    <p>Just sign up, and get started by adding the URL of an item that you wish to track. We'll do the rest!</p>
+    <a class="btn btn-primary btn-lg mt-2" href="{{url_for('users.register_user') }}" role="button">Get Started</a>
+</div>
+{% endblock %}

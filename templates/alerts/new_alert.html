@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <header>
+        <section class="container create-alert-form">
+            <h1>Create Alert</h1>
+            <form method="post">
+                <div  class="form group">
+                    <label for="name">Name</label> 
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Surface Pro 6" /> 
+                </div>
+                <div  class="form group">
+                <!--   <label for="item_id">Item ID</label> The id field in the input type is used to match the filed and label together. The name is used in the python code. 
+                    <input type="text" class="form-control" id="item_id" name="item_id"  /> -->
+                    <label for="item_url">Item URL</label>
+                    <input type="text" class="form-control" id="item_url" name="item_url"  />
+                </div> 
+                <div  class="form group">
+                    <label for="price_limit">Price Limit</label> 
+                    <input type="text" class="form-control" id="price_limit" name="price_limit" placeholder=120 aria-describedby="priceLimitHelp" /> <!--JSON requires double quotationn marks - just one of those things forced upon us.-->
+                    <small id="priceLimitHelp" class="form-text text-muted">
+                        Under which price for the item would you like to get notified?
+                    </small>
+                </div>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </section>
+    </header>
+{% endblock %}
