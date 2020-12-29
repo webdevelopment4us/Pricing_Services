@@ -11,7 +11,8 @@ def register_user():
         try:
             User.register_user(email, password)
             session['email'] = email
-            return email
+            flash("You have registered successfully","success")
+            return redirect(url_for("home"))
         except UserErrors.UserError as e:
             return e.message
     return render_template("/users/register.html")
