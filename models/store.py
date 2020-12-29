@@ -7,7 +7,7 @@ import uuid, re
 class Store(Model):
     collection: str = field(init=False, default="stores")
     name: str
-    url_prefix: str # https://johnlewis.com/
+    url_prefix: str
     tag_name: str
     query: Dict
     _id: str = field(default_factory=lambda : uuid.uuid4().hex)
@@ -22,12 +22,12 @@ class Store(Model):
             }
 
     @classmethod
-    def get_by_name(cls, store_name: str) -> "Store":  #Store.get_by_name("John Lewis")
+    def get_by_name(cls, store_name: str) -> "Store":
         return cls.find_one_by("name", store_name)
 
     @classmethod
     def get_by_url_prefix(cls, url_prefix: str) -> "Store":
-        url_regex = {"$regex": "^{}".format(url_prefix)} # $regex says regular expression validation by mongoDB while searching for  "^{}".format(url_prefix)  i.e make usre that it starts with the url prefix
+        url_regex = {"$regex": "^{}".format(url_prefix)}
         return cls.find_one_by("url_prefix", url_regex)
 
     @classmethod

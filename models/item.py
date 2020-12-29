@@ -15,13 +15,10 @@ class Item(Model):
     _id: str = field(default_factory=lambda : uuid.uuid4().hex)
         
     def load_price(self) -> float:
-        # print ("Getting into the load_price method")
         response = requests.get(self.url)
         content = response.content
         soup = BeautifulSoup(content, "html.parser")
         element = soup.find (self.tag_name, self.query)
-        # print (f"The URL is {self.url} and tag_name {self.tag_name} and {self.query}")
-        # print ("-------",element)
         string_price = element.text.strip()
         pattern = re.compile(r"(\d+,?\d*\.\d+)")
         match = pattern.search(string_price)

@@ -24,7 +24,6 @@ def login_user():
         try:
             if User.is_login_valid(email, password):
                 session['email'] = email
-                # return email
                 flash("You have logged in successfully","success")
                 return redirect(url_for("home"))
         except UserErrors.UserError as e:
@@ -36,4 +35,4 @@ def logout():
     session['email'] = None
     if not session.get('email'):
             flash('You have logged out successfully! Please visit again', 'success')
-    return redirect(url_for('home')) #can also redirect to the home page, need to handle the css accordingly.
+    return redirect(url_for('home'))

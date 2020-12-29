@@ -6,9 +6,9 @@ from dataclasses import dataclass, field
 from libs.mailgun import Mailgun
 import uuid
 
-@dataclass(eq=False) # going to remove all quality generation from the class i.e we will no longer be able to compare alerts as it does not make sense to compare two alerts in our app so inorder to prevent us from accidentally doing that we use eq=False which will give an error when we try to do a compare.
+@dataclass(eq=False)
 class Alert(Model):
-    collection: str = field(init=False, default="alerts") # will not be included in init method and will be default value for all the objects that are created for the Alert class.
+    collection: str = field(init=False, default="alerts")
     name: str
     item_id: str
     price_limit: float
@@ -26,7 +26,7 @@ class Alert(Model):
             "item_id": self.item_id,
             "price_limit":self.price_limit,
             "user_email": self.user_email    
-        } # the order does not matter as they are passed into the class as named arguements.
+        }
         
     def load_item_price(self) -> float:
         self.item.load_price()
@@ -41,11 +41,3 @@ class Alert(Model):
                 text=f"Your alert {self.name} has reached a price under {self.price_limit}. The latest price is {self.item.price}. Go to this address to check your item: {self.item.url}.",
                 html=f'<p>Your alert {self.name} has reached a price under {self.price_limit}.</p><p>The latest price is {self.item.price}. Check your item out <a href="{self.item.url}>here</a>.</p>',
             )
-
-
-
-# Notes:
-# If there is a superclass, the dataclass generated init method will call the init method of the superclass for you.
-# Superclasses don't have to be data classes.
-# Dataclasses are code generators that generates init methods, repr methods, comparisons and hashing.
-#  __post_init__(self) - method runs after the init method and has access to self i.e self.item_id for example.

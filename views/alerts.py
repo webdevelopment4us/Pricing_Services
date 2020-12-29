@@ -9,7 +9,6 @@ alert_blueprint = Blueprint("alerts", __name__)
 @alert_blueprint.route("/")
 @requires_login
 def index():
-    # print (session['email'])
     alerts = Alert.find_many_by("user_email",session['email'])
     return render_template("/alerts/index.html", alerts=alerts)
 
@@ -36,7 +35,7 @@ def edit_alert(alert_id):
         price_limit = float(request.form["price_limit"])
         alert.price_limit = price_limit
         alert.save_to_mongo()
-        return redirect(url_for('.index')) # '.' dot here means current blueprint and index is the name of the function and then redirect is going to send the user from this "/edit/<string:alert_id>" endpoint to that one "/"
+        return redirect(url_for('.index'))
     return render_template("/alerts/edit_alert.html", alert=alert)
 
 @alert_blueprint.route("/delete/<string:alert_id>")

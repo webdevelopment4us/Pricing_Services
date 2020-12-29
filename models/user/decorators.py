@@ -19,8 +19,3 @@ def requires_admin(func: Callable) -> Callable:
             return redirect(url_for('users.login_user'))
         return func(*args, **kwargs)
     return decorated_function
-
-
-
-# Notes:
-# @functools.wraps(func)  - retains the original name and documentation of the original function i.e func which are the laerts.py's functions

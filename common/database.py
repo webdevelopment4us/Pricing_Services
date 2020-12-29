@@ -15,7 +15,7 @@ class Database:
         return Database.DATABASE[collection].find(query)
 
     @staticmethod
-    def find_one(collection: str, query: Dict) -> Dict : # returns a dictionary and we can turn it to an item object which helps us to call methods on that object
+    def find_one(collection: str, query: Dict) -> Dict :
         return Database.DATABASE[collection].find_one(query)
 
     @staticmethod
@@ -24,5 +24,5 @@ class Database:
 
     @staticmethod
     def remove(collection: str, query: Dict) -> Dict:
-        return Database.DATABASE[collection].remove(query) # returns all of the elements we have removed matching this query from the DB
+        return Database.DATABASE[collection].remove(query)
 
