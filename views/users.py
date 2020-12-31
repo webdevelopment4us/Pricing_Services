@@ -14,7 +14,8 @@ def register_user():
             flash("You have registered successfully","success")
             return redirect(url_for("home"))
         except UserErrors.UserError as e:
-            return e.message
+            flash(e.message,"warning")
+            return redirect(url_for(".login_user"))
     return render_template("/users/register.html")
 
 @user_blueprint.route("/login", methods=["GET", "POST"])
@@ -28,7 +29,8 @@ def login_user():
                 flash("You have logged in successfully","success")
                 return redirect(url_for("home"))
         except UserErrors.UserError as e:
-            return e.message
+            flash(e.message,"info")
+            return redirect(url_for(".register_user"))
     return render_template("/users/login.html")
 
 @user_blueprint.route("/logout")
