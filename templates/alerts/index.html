@@ -10,7 +10,7 @@
                         <a href="{{alert.item.url}}"> {{ alert.item_id }} (last price {{ alert.item.price }})</a>
                     </p>
                     <a class="btn btn-secondary" href="{{ url_for('alerts.edit_alert', alert_id=alert._id) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ url_for('alerts.confirm_delete', alert_id=alert._id) }}">Permanently Delete</a>
+                    <a class="btn btn-danger" href="{{ url_for('alerts.confirm_delete', alert_id=alert._id) }}">Delete Permanently</a>
                 </div>
             {% endfor %}
         </div>
