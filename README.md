@@ -1,10 +1,8 @@
 # Pricing Services
 
-Updated the description by Subha.
-
 This is an application built to allow the periodic scanning of online webstores, to notify users of changes in prices of items they select.
 
-This application is part of the course "The Complete Python Web Developer". 
+This application is developed as a part of the "Web developer Bootcamp with Flask and Python. 
 
 It allows administrators (defined via src/config.py) to add, remove, and edit online stores.
 
