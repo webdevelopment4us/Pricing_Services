@@ -2,7 +2,7 @@
 
 This is an application built to allow the periodic scanning of online webstores, to notify users of changes in prices of items they select.
 
-This application is developed as a part of the "Web developer Bootcamp with Flask and Python. 
+This application is developed as a part of the "Web developer Bootcamp with Flask and Python" to get a hands-on experience in developing a full-stack project. 
 
 It allows administrators (defined via src/config.py) to add, remove, and edit online stores.
 
