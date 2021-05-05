@@ -20,7 +20,7 @@ class Item(Model):
         soup = BeautifulSoup(content, "html.parser")
         element = soup.find (self.tag_name, self.query)
         string_price = element.text.strip()
-        pattern = re.compile(r"(\d+,?\d*\.\d+)")
+        pattern = re.compile(r"(\d+,?\d*\.?\d+)")
         match = pattern.search(string_price)
         found_price = match.group(1)
         without_comma = found_price.replace(",", "")
